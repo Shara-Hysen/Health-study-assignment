@@ -1,12 +1,20 @@
 import numpy as np
 import pandas as pd
 from scipy import stats
+from typing import List
+
+#Fick vågor under alla 'display' så rådfrågade min vän ChatGPT som hänvisade till att importra nedan.
+from IPython.display import display  
+
 
 class HealthAnalyzer:
-    def __init__(self, df):
+    def __init__(self, df: pd.DataFrame) -> None:
+        """
+        Tar in dataframe som underlag av analyser
+        """
         self.df = df
 
-    def info_print(self):
+    def info_print(self) -> None:
         """
         Visar olika typer av info från dataframe (head, info, describe, duplicates)
         """
@@ -15,11 +23,11 @@ class HealthAnalyzer:
         display(self.df.describe())
         print('Dubblettrader: ',self.df.duplicated().any())
     
-    def summery_stats(self, columns):
+    def summery_stats(self, columns: List[str]) -> pd.DataFrame:
         """Räknar medelvärde, median, min och max av valda kolumner"""
         return self.df[columns].agg(['mean', 'median', 'min', 'max']).round(2)
     
-    def disease_sim(self, column='disease', n=1000):
+    def disease_sim(self, column: str ='disease', n: int =1000) -> pd.DataFrame:
         """
         Skapar en simulering av sjukdomsfördelning från dataset. 
         Retunerar en Dataframe med antal och andelar
