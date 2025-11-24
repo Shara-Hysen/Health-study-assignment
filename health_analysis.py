@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 from typing import List
+from sklearn.linear_model import LinearRegression
 
 #Fick vågor under alla 'display' så rådfrågade min vän ChatGPT som hänvisade till att importra nedan.
 from IPython.display import display  
@@ -30,7 +31,7 @@ class HealthAnalyzer:
     def disease_sim(self, column: str ='disease', n: int =1000) -> pd.DataFrame:
         """
         Skapar en simulering av sjukdomsfördelning från dataset. 
-        Retunerar en Dataframe med antal och andelar
+        Retunerar en Dataframe med antal och andelar från både orginaldata och simulering
         """
         # Data från orginal-df
         num_sick = self.df[column].sum()                    
@@ -54,3 +55,25 @@ class HealthAnalyzer:
             'Andel (sim, %)': [round(share_sick_sim * 100, 2), round(share_healthy_sim * 100, 2)]
         })
         return results
+    
+    def linear_regression(self, x_cols: List[str], y_col: str) -> dict:
+        """
+        Tar ut värden för en linjär regression (både enkel och multipel) 
+        Retunerar dict med: intercept, slope, R2
+        """
+        X = self.df[x_cols].values
+        y = self.df[y_col].values
+
+        model = LinearRegression()
+        model.fit(X, y)
+
+        # # Gör koefficienter i en dict som är lätt att läsa. (ChatGPT hjälpte mig här)
+        # coef_dict = {col: float(coef) for col, coef in zip(x_cols, model.coef_)}
+
+        return {
+            'intercept': float(model.intercept_),
+            'slope' : model.coef_,
+            'R2' : float(model.score(X, y))
+        }
+    
+    
