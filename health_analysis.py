@@ -67,9 +67,6 @@ class HealthAnalyzer:
         model = LinearRegression()
         model.fit(X, y)
 
-        # # Gör koefficienter i en dict som är lätt att läsa. (ChatGPT hjälpte mig här)
-        # coef_dict = {col: float(coef) for col, coef in zip(x_cols, model.coef_)}
-
         return {
             'intercept': float(model.intercept_),
             'slope' : model.coef_,
