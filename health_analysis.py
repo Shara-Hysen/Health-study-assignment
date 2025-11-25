@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
 from scipy import stats
-from typing import List
 from sklearn.linear_model import LinearRegression
 
 #Fick vågor under alla 'display' så rådfrågade min vän ChatGPT som hänvisade till att importra nedan.
@@ -24,7 +24,7 @@ class HealthAnalyzer:
         display(self.df.describe())
         print('Dubblettrader: ',self.df.duplicated().any())
     
-    def summery_stats(self, columns: List[str]) -> pd.DataFrame:
+    def summery_stats(self, columns: list[str]) -> pd.DataFrame:
         """Räknar medelvärde, median, min och max av valda kolumner"""
         return self.df[columns].agg(['mean', 'median', 'min', 'max']).round(2)
     
@@ -56,7 +56,7 @@ class HealthAnalyzer:
         })
         return results
     
-    def linear_regression(self, x_cols: List[str], y_col: str) -> dict:
+    def linear_regression(self, x_cols: list[str], y_col: str) -> dict:
         """
         Tar ut värden för en linjär regression (både enkel och multipel) 
         Retunerar dict med: intercept, slope, R2
@@ -73,4 +73,40 @@ class HealthAnalyzer:
             'R2' : float(model.score(X, y))
         }
     
+class Plotter:
+    def bar(self, ax, x: list, y:list, title:str, xlabel:str, ylabel:str, alpha: float=1.0):
+        """Bar-diagram"""
+        ax.bar(x, y)
+        ax.set_title(title)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        ax.grid(True, axis= 'y')
+        return ax
     
+    def box(self, ax, df: pd.DataFrame, column: str , by: str , title: str, xlabel: str, ylabel: str):
+        """Boxplot column = kolumn som ska plottas, by = kolumn för gruppering"""
+        df.boxplot(column=column, by=by, ax=ax)
+        ax.set_title(title)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        ax.grid(True, axis= 'y')
+        plt.suptitle('')        #Ta bort auto-titel
+        return ax
+    
+    def scatter(self, ax, x: list, y: list, title: str, xlabel: str, ylabel: str, alpha: float=0.6):
+        """Scatter-diagram"""
+        ax.scatter(x, y)
+        ax.set_title(title)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        ax.grid(True, axis='both')        
+        return ax
+    
+    def hist(self, ax, data: list, title: str, xlabel: str, ylabel: str,bins: int =20, alpha: float=0.7):
+        """Histogram"""
+        ax.hist(data, bins=bins, alpha=0.7)
+        ax.set_title(title)
+        ax.set_xlabel(xlabel)
+        ax.set_ylabel(ylabel)
+        ax.grid(True, axis= 'y')
+        return ax
