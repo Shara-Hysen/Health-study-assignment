@@ -102,11 +102,15 @@ class Plotter:
         ax.grid(True, axis='both')        
         return ax
     
-    def hist(self, ax, data: list, title: str, xlabel: str, ylabel: str,bins: int =20, alpha: float=0.7):
+    def hist(self, ax, data: list, title: str, xlabel: str, ylabel: str,bins: int =20, alpha: float=0.7, edgecolor=None):
         """Histogram"""
-        ax.hist(data, bins=bins, alpha=0.7)
+        ax.hist(data, bins=bins, alpha=alpha, edgecolor=edgecolor)
         ax.set_title(title)
         ax.set_xlabel(xlabel)
         ax.set_ylabel(ylabel)
         ax.grid(True, axis= 'y')
         return ax
+    
+    def plot(self, ax, x, y, color='black', linewidth=2, label=''):
+        ax.plot(x, y, color=color, linewidth=linewidth, label=label)
+       
