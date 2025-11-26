@@ -1,7 +1,6 @@
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-from scipy import stats
 from sklearn.linear_model import LinearRegression
 
 #Fick vågor under alla 'display' så rådfrågade min vän ChatGPT som hänvisade till att importra nedan.
@@ -24,7 +23,7 @@ class HealthAnalyzer:
         display(self.df.describe())
         print('Dubblettrader: ',self.df.duplicated().any())
     
-    def summery_stats(self, columns: list[str]) -> pd.DataFrame:
+    def summery_stats(self, columns: list) -> pd.DataFrame:
         """Räknar medelvärde, median, min och max av valda kolumner"""
         return self.df[columns].agg(['mean', 'median', 'min', 'max']).round(2)
     
