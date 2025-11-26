@@ -19,7 +19,7 @@ class HealthAnalyzer:
         Visar olika typer av info från dataframe (head, info, describe, duplicates)
         """
         display(self.df.head())
-        display(self.df.info())
+        self.df.info()
         display(self.df.describe())
         print('Dubblettrader: ',self.df.duplicated().any())
     
