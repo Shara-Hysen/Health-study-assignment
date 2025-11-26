@@ -55,7 +55,7 @@ class HealthAnalyzer:
         })
         return results
     
-    def linear_regression(self, x_cols: list[str], y_col: str) -> dict:
+    def linear_regression(self, x_cols: list, y_col: str) -> dict:
         """
         Tar ut värden för en linjär regression (både enkel och multipel) 
         Retunerar dict med: intercept, slope, R2
