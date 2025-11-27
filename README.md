@@ -2,7 +2,7 @@
 
 ## Beskrivning
 
-Detta projekt analyserar ett dataset från en hälsostudie med cirka 800 personer. Syftet är att undersöka samband mellan variabler som ålder, vikt, blodtryck och kolesterol samt att utföra statistiska tester och simuleringar för att belysa skillnader mellan grupper, t.ex. rökare och icke-rökare.
+Detta projekt analyserar ett dataset från en hälsostudie med 800 personer. Syftet är att undersöka samband mellan variabler som ålder, vikt, blodtryck och kolesterol samt att utföra statistiska tester och simuleringar för att belysa skillnader mellan grupper, t.ex. rökare och icke-rökare.
 
 ## Filstruktur
 
@@ -23,8 +23,8 @@ git clone https://github.com/Shara-Hysen/Health-study-assignment.git
 cd HEALTH-STUDY
 
 2. Skapa och aktivera virtuell miljö:
-python -m venv .venv
-.venv\Scripts\activate      # Windows
+python -m venv .venv  
+.venv\Scripts\activate      # Windows  
 source .venv/bin/activate   # Linux/macOS  
 
 3. Installera beroenden:
@@ -34,7 +34,7 @@ pip install -r requirements.txt
 jupyter notebook Hälsostudie.ipynb
 
 
-## Funktioner och innehåll
+## Innehåll
 
 - Dataöversikt: Läser in och visar grundläggande info om datasetet.
 - Beskrivande statistik: Sammanfattar variabler och skapar visualiseringar (histogram, boxplot, stapeldiagram).
@@ -44,4 +44,8 @@ jupyter notebook Hälsostudie.ipynb
 - Poweranalys: Uppskattar styrkan i hypotesprövningen via simulering.
 - Linjär regression: Analyserar samband mellan ålder, vikt och blodtryck/kolesterol med regression och residualanalys.
 
+
+## Källor
+
+All kod är tagen från videolektionerna i samråd med ChatGPT.
 
