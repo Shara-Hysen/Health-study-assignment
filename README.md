@@ -20,7 +20,7 @@ Detta projekt analyserar ett dataset från en hälsostudie med 800 personer. Syf
 - Hälsostudie.ipynb – Notebook med analys och diagram
 - health_analysis.py – Modul med analysfunktioner och visualisering
 - .gitignore – Ignorerade filer för Git
-- requirements.txt – Pythonberoenden
+- requirements.txt – Lista över Pythonpaket som behövs för att köra projektet.
 
 ## Miljö
 
@@ -29,12 +29,12 @@ Python version 3.13.7
 ## Installation och körning
 
 1. **Klona repo:**
-git clone https://github.com/Shara-Hysen/Health-study-assignment.git  
-cd HEALTH-STUDY
+git clone https://github.com/Shara-Hysen/Health-study-assignment.git   
+cd Health-study-assignment
 
-2. **Skapa och aktivera virtuell miljö:**
-python -m venv .venv  
-.venv\Scripts\activate      # Windows  
+2. **Skapa och aktivera virtuell miljö:**   
+python -m venv .venv   
+.venv\Scripts\Activate      # Windows  
 source .venv/bin/activate   # Linux/macOS  
 
 3. **Installera beroenden:**
